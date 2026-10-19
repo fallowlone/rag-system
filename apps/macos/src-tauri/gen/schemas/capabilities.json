@@ -1,0 +1,1 @@
+{"default":{"identifier":"default","description":"Default capability: core IPC plus opener (external URLs: Telegram bot chat for reverse pairing) and dialog (file picker for drop-to-analyze)","local":true,"windows":["main"],"permissions":["core:default",{"identifier":"opener:allow-open-url","allow":[{"url":"https://t.me/*"}]},"dialog:default"]}}

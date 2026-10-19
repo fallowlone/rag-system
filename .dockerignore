@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.git/
+.github/
+.gitignore
+*.md
+*.test.ts
+*.spec.ts
+coverage/
+test/
+docs/
+# macOS companion app (Cargo workspace incl. multi-GB build artifacts)
+apps/

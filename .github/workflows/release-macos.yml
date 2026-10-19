@@ -1,0 +1,90 @@
+name: macOS app release
+
+# Builds, signs (if APPLE_CERTIFICATE secrets are set), and notarizes the
+# Dokumente.app + .dmg on every tag. Without secrets it still produces an
+# unsigned artifact for local testing.
+on:
+  push:
+    tags: ["dokumente-v*"]
+  workflow_dispatch:
+
+concurrency:
+  group: macos-release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release:
+    name: Build + sign + notarize
+    runs-on: macos-14
+    defaults:
+      run:
+        working-directory: apps/macos
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust build cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: apps/macos
+
+      - name: Install cmake (llama.cpp build dep)
+        run: brew install cmake
+
+      - name: Install UI dependencies (bundle builds via beforeBuildCommand)
+        run: npm --prefix ui ci
+
+      - name: Test core crate (default features)
+        run: cargo test -p dokumente-core
+
+      - name: Test core crate (llama features)
+        run: cargo test -p dokumente-core --features llama
+
+      - name: Build .app + .dmg (signed if secrets present)
+        env:
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_UPDATER_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_UPDATER_KEY_PASSWORD }}
+        run: |
+          npx --yes @tauri-apps/cli@latest build \
+            --config src-tauri/tauri.conf.json
+
+      - name: Verify hardened runtime + entitlements on signed builds
+        if: env.APPLE_CERTIFICATE != ''
+        run: |
+          APP_PATH=$(find target/release/bundle -name '*.app' | head -1)
+          codesign --verify --strict --verbose=2 "$APP_PATH"
+          codesign -d --entitlements :- "$APP_PATH" | grep -q 'app-sandbox'
+
+      - name: Upload unsigned artifact
+        if: env.APPLE_CERTIFICATE == ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: dokumente-unsigned
+          path: |
+            apps/macos/target/release/bundle/dmg/*.dmg
+            apps/macos/target/release/bundle/macos/*.app
+          if-no-files-found: error
+
+      - name: Upload signed artifacts to GitHub Release
+        if: env.APPLE_CERTIFICATE != ''
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            apps/macos/target/release/bundle/dmg/*.dmg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

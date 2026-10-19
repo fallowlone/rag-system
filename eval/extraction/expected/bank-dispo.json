@@ -1,0 +1,20 @@
+{
+  "fixture": "bank-dispo.txt",
+  "category": "bank",
+  "note": "The IBAN appears twice in the source and must never survive into the extraction — mask_ibans is a privacy invariant, not a nice-to-have.",
+  "details": [
+    { "id": "kundennummer",  "label": "Kundennummer",     "kind": "text",     "value": "98765432",  "tier": "deterministic" },
+    { "id": "berater_phone", "label": "Telefon Berater",  "kind": "digits",   "value": "0301234567","tier": "deterministic" },
+    { "id": "zimmer",        "label": "Zimmer Filiale",   "kind": "text",     "value": "204",       "tier": "deterministic" },
+    { "id": "doc_date",      "label": "Briefdatum",       "kind": "iso_date", "value": "2026-09-02","tier": "deterministic" },
+
+    { "id": "saldo",         "label": "Negativer Saldo",  "kind": "text",     "value": "1.240,50",  "tier": "model" },
+    { "id": "dispo",         "label": "Dispositionskredit","kind": "text",    "value": "2.000,00",  "tier": "model" },
+    { "id": "sollzins",      "label": "Sollzinssatz",     "kind": "text",     "value": "11,25",     "tier": "model" },
+    { "id": "deadline_ausgleich", "label": "Frist Ausgleich", "kind": "iso_date", "value": "2026-09-25", "tier": "model" },
+    { "id": "deadline_termin",    "label": "Beratungsgespraech", "kind": "iso_date", "value": "2026-09-18", "tier": "model" }
+  ],
+  "forbidden": [
+    { "id": "iban", "label": "IBAN", "kind": "digits", "value": "12345678901234567890" }
+  ]
+}

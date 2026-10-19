@@ -1,0 +1,18 @@
+-- Re-extraction could not reach the server.
+--
+-- sourceHash keys the FILE, not the extraction, so a document re-extracted
+-- with a better model (or a changed prompt, or a new schema) arrived as a
+-- duplicate: healDuplicate wrote facts and deadlines only when their count was
+-- exactly zero, never refreshed title/summary/category/isActive/factsCount,
+-- and never recomputed insights. Every improvement to extraction was invisible
+-- for every document already ingested, and there was no way to force it
+-- through short of deleting and re-uploading.
+--
+-- extractionHash fingerprints the extraction payload itself, so the ingest
+-- path can tell "the same document again" from "the same document, extracted
+-- differently" and re-ingest only in the second case.
+--
+-- NULL on existing rows: their fingerprint is unknown, so the first re-push of
+-- each will look like a change and re-ingest once. That is the correct
+-- outcome — those rows are exactly the ones holding stale extractions.
+ALTER TABLE "UserDocument" ADD COLUMN IF NOT EXISTS "extractionHash" TEXT;

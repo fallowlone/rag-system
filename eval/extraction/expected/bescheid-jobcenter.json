@@ -1,0 +1,23 @@
+{
+  "fixture": "bescheid-jobcenter.txt",
+  "category": "jobcenter",
+  "note": "Baseline fixture. Every deterministic detail here is one ensure_key_details claims to guarantee; a Tier 1 failure means the backstop regressed.",
+  "details": [
+    { "id": "bg_nummer",      "label": "BG-Nummer",              "kind": "text",     "value": "1234567BG89012", "tier": "deterministic" },
+    { "id": "berater_phone",  "label": "Telefon Ansprechpartner","kind": "digits",   "value": "03055578912",    "tier": "deterministic" },
+    { "id": "sprechzeiten",   "label": "Sprechzeiten",           "kind": "text",     "value": "dienstag 9:00-12:00", "tier": "deterministic" },
+    { "id": "zimmer",         "label": "Zimmer",                 "kind": "text",     "value": "a2.14",          "tier": "deterministic" },
+    { "id": "doc_date",       "label": "Briefdatum",             "kind": "iso_date", "value": "2026-09-12",     "tier": "deterministic" },
+
+    { "id": "amount_total",   "label": "Monatlicher Betrag",     "kind": "text",     "value": "563,00",         "tier": "model" },
+    { "id": "amount_miete",   "label": "Anteil Miete",           "kind": "text",     "value": "420,00",         "tier": "model" },
+    { "id": "amount_heizung", "label": "Anteil Heizkosten",      "kind": "text",     "value": "85,00",          "tier": "model" },
+    { "id": "deadline_nachweise", "label": "Frist Nachweise",    "kind": "iso_date", "value": "2026-09-30",     "tier": "model" },
+    { "id": "deadline_termin",    "label": "Beratungstermin",    "kind": "iso_date", "value": "2026-10-05",     "tier": "model" },
+    { "id": "obligation_mietvertrag", "label": "Pflicht: Mietvertrag einreichen", "kind": "text", "value": "mietvertrag", "tier": "model" },
+    { "id": "obligation_kontoauszuege", "label": "Pflicht: Kontoauszuege", "kind": "text", "value": "kontoausz", "tier": "model" }
+  ],
+  "forbidden": [
+    { "id": "boilerplate", "label": "Maschinelle Floskel", "kind": "text", "value": "ohne unterschrift gueltig" }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "fixture": "mietvertrag.txt",
+  "category": "mietvertrag",
+  "note": "Mietbeginn, Wohnflaeche and Buerozeiten moved model -> deterministic (A4): ensure_key_details now anchors on 'Buerozeiten'/'Oeffnungszeiten', reads the floor area out of prose, and reads a contract start date from 'beginnt am'. All three were 0/5 every run as model-tier.",
+  "details": [
+    {
+      "id": "verwalter_phone",
+      "label": "Telefon Hausverwaltung",
+      "kind": "digits",
+      "value": "0308812334",
+      "tier": "deterministic"
+    },
+    {
+      "id": "doc_date",
+      "label": "Briefdatum",
+      "kind": "iso_date",
+      "value": "2026-08-20",
+      "tier": "deterministic"
+    },
+    {
+      "id": "mietbeginn",
+      "label": "Mietbeginn",
+      "kind": "iso_date",
+      "value": "2026-11-01",
+      "tier": "deterministic"
+    },
+    {
+      "id": "kuendigungsfrist",
+      "label": "Kuendigungsfrist",
+      "kind": "text",
+      "value": "3 monate",
+      "tier": "model"
+    },
+    {
+      "id": "kaltmiete",
+      "label": "Kaltmiete",
+      "kind": "text",
+      "value": "750,00",
+      "tier": "model"
+    },
+    {
+      "id": "betriebskosten",
+      "label": "Betriebskosten",
+      "kind": "text",
+      "value": "180,00",
+      "tier": "model"
+    },
+    {
+      "id": "gesamtmiete",
+      "label": "Gesamtmiete",
+      "kind": "text",
+      "value": "930,00",
+      "tier": "model"
+    },
+    {
+      "id": "kaution",
+      "label": "Kaution",
+      "kind": "text",
+      "value": "2.250,00",
+      "tier": "model"
+    },
+    {
+      "id": "kleinreparatur",
+      "label": "Kleinreparaturen-Grenze",
+      "kind": "text",
+      "value": "100,00",
+      "tier": "model"
+    },
+    {
+      "id": "wohnflaeche",
+      "label": "Wohnflaeche",
+      "kind": "text",
+      "value": "68",
+      "tier": "deterministic"
+    },
+    {
+      "id": "buerozeiten",
+      "label": "Buerozeiten Ansprechpartner",
+      "kind": "text",
+      "value": "10:00-15:00",
+      "tier": "deterministic"
+    }
+  ],
+  "forbidden": []
+}

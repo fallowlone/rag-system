@@ -1,0 +1,106 @@
+{
+  "fixture": "versicherung-kfz.txt",
+  "category": "versicherung",
+  "note": "Versicherungsnummer, Kennzeichen and the e-mail moved model -> deterministic (A4): the reference-number label list gained 'Versicherungsnummer', plates are matched by shape (read_plate) so they can be read out of the middle of a sentence, and addresses are found by scanning for '@' rather than by label. All three were 0/5 every run as model-tier.",
+  "details": [
+    {
+      "id": "kundennummer",
+      "label": "Kundennummer",
+      "kind": "text",
+      "value": "55130987",
+      "tier": "deterministic"
+    },
+    {
+      "id": "berater_phone",
+      "label": "Telefon Berater",
+      "kind": "digits",
+      "value": "0405550123",
+      "tier": "deterministic"
+    },
+    {
+      "id": "sprechzeiten",
+      "label": "Sprechzeiten",
+      "kind": "text",
+      "value": "montag bis donnerstag 8:30-16:00",
+      "tier": "deterministic"
+    },
+    {
+      "id": "zimmer",
+      "label": "Zimmer",
+      "kind": "text",
+      "value": "1105",
+      "tier": "deterministic"
+    },
+    {
+      "id": "doc_date",
+      "label": "Briefdatum",
+      "kind": "iso_date",
+      "value": "2026-09-14",
+      "tier": "deterministic"
+    },
+    {
+      "id": "versicherungsnummer",
+      "label": "Versicherungsnummer",
+      "kind": "text",
+      "value": "kfz-2026-884512",
+      "tier": "deterministic"
+    },
+    {
+      "id": "kennzeichen",
+      "label": "Kennzeichen",
+      "kind": "text",
+      "value": "b-am 4711",
+      "tier": "deterministic"
+    },
+    {
+      "id": "beitrag_alt",
+      "label": "Jahresbeitrag alt",
+      "kind": "text",
+      "value": "642,00",
+      "tier": "model"
+    },
+    {
+      "id": "beitrag_neu",
+      "label": "Jahresbeitrag neu",
+      "kind": "text",
+      "value": "731,50",
+      "tier": "model"
+    },
+    {
+      "id": "selbstbeteiligung",
+      "label": "Selbstbeteiligung",
+      "kind": "text",
+      "value": "500,00",
+      "tier": "model"
+    },
+    {
+      "id": "deadline_kuendigung",
+      "label": "Sonderkuendigungsfrist",
+      "kind": "iso_date",
+      "value": "2026-11-30",
+      "tier": "model"
+    },
+    {
+      "id": "deadline_kmstand",
+      "label": "Frist Kilometerstand",
+      "kind": "iso_date",
+      "value": "2026-12-15",
+      "tier": "model"
+    },
+    {
+      "id": "vertragsende",
+      "label": "Vertragsende",
+      "kind": "iso_date",
+      "value": "2026-12-31",
+      "tier": "model"
+    },
+    {
+      "id": "email",
+      "label": "E-Mail Kontakt",
+      "kind": "text",
+      "value": "kfz-service@nordlicht-example.de",
+      "tier": "deterministic"
+    }
+  ],
+  "forbidden": []
+}

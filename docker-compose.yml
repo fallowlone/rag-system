@@ -1,0 +1,91 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    # Every other service restarts on its own; without this one the database
+    # is the ONE thing that does not come back after a host reboot or a
+    # Docker daemon restart. depends_on does not cover that — it orders
+    # startup at `up` time, not recovery — so the app, redis and
+    # retrieval-models all return healthy while nothing actually works.
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: lawrag
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d lawrag"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    # Persistence is ON on purpose: BullMQ job records, pairing claims and
+    # rate-limit/dedup keys live in Redis — with --save "" every restart,
+    # redeploy or OOM wiped waiting/active jobs with no user notification
+    # (stuck "Analysieren…" status messages).
+    #
+    # volatile-lru, not allkeys-lru and not noeviction. allkeys-lru evicted
+    # BullMQ records under embedding-cache pressure — that is the silent loss
+    # this policy exists to prevent. noeviction prevented it by failing EVERY
+    # write once memory filled, queue enqueues included: the whole bot stops,
+    # and the embedding cache grows with ingest volume (24h TTL, ~15-20 KB per
+    # key, so 512 MB is ~25-30k entries — one full law reindex reaches it).
+    # volatile-lru evicts only keys that carry a TTL, which is exactly the
+    # cache (emb:/rerank2:/qpp2:/conv:/pairing) and never BullMQ, whose keys
+    # have none. Same guarantee, without the outage.
+    command: redis-server --requirepass ${REDIS_PASSWORD} --maxmemory 512mb --maxmemory-policy volatile-lru --appendonly yes
+    ports:
+      - "127.0.0.1:6380:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  retrieval-models:
+    image: ${RETRIEVAL_MODELS_IMAGE:-rag-system-retrieval:local}
+    build:
+      context: ./services/retrieval-models
+    restart: unless-stopped
+    environment:
+      HF_HOME: /models/huggingface
+      EMBEDDING_MODEL: BAAI/bge-m3
+      RERANKER_MODEL: BAAI/bge-reranker-v2-m3
+      EMBED_MAX_LENGTH: "512"
+    ports:
+      - "127.0.0.1:8001:8000"
+    volumes:
+      - retrieval_models_cache:/models/huggingface
+
+  app:
+    image: ${APP_IMAGE:-rag-system-app:local}
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      retrieval-models:
+        condition: service_healthy
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      # Override localhost values from .env with Docker network hostnames
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/lawrag
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379
+      LOCAL_RETRIEVAL_URL: ${LOCAL_RETRIEVAL_URL_DOCKER:-http://retrieval-models:8000}
+      LOCAL_RETRIEVAL_TIMEOUT_MS: ${LOCAL_RETRIEVAL_TIMEOUT_MS:-10000}
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data:
+  redis_data:
+  retrieval_models_cache:

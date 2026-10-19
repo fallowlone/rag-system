@@ -1,0 +1,61 @@
+[package]
+name = "dokumente-core"
+description = "Dokumente macOS app core: document extraction, encrypted store, sync outbox"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+# The `smoke` example needs the native llama.cpp build (cmake) — it must not
+# compile under default features.
+[[example]]
+name = "smoke"
+required-features = ["llama"]
+
+# Same gating for the extraction-quality eval harness.
+[[example]]
+name = "eval-extraction"
+required-features = ["llama"]
+
+[target.'cfg(target_os = "macos")'.dependencies]
+# Direct SecurityFramework password access — see crypto.rs for why the
+# `keyring` crate is not used (Data Protection keychain scoping breaks
+# unsigned dev builds).
+security-framework = "2"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "1"
+# statvfs free-space probes + macOS hw.memsize RAM queries (no sysinfo dep
+# for two syscalls).
+libc = "0.2"
+sha2 = "0.10"
+hex = "0.4"
+rand = "0.8"
+base64 = "0.22"
+rusqlite = { version = "0.32", features = ["bundled-sqlcipher"] }
+pdf-extract = "0.7"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+quick-xml = "0.36"
+# Unique per-call staging of the embedded OCR Swift script (parallel ingests
+# must never share one fixed temp path).
+tempfile = "3"
+
+ureq = { version = "2", features = ["json"] }
+encoding_rs = "0.8"
+# On-device OPUS-MT translation (ort 1.x line is fully yanked upstream, so we
+# pin the 2.0 RC; `load-dynamic` because we ship a pinned onnxruntime dylib
+# via ModelManager instead of trusting the build-time CDN download).
+ort = { version = "=2.0.0-rc.13", default-features = false, features = ["std", "ndarray", "load-dynamic"] }
+ndarray = "0.17"
+sentencepiece = "0.14"
+llama-cpp-2 = { version = "0.1", optional = true, features = ["llguidance"] }
+# Direct dep required to build the LLGuidance grammar matcher (llama-cpp-2
+# enables it internally but does not re-export it).
+llguidance = { version = "1.7", optional = true }
+
+[features]
+# Local llama.cpp inference (requires cmake + a C++ toolchain to build
+# llama.cpp; Metal is enabled automatically on Apple Silicon by the crate).
+default = []
+llama = ["dep:llama-cpp-2", "dep:llguidance"]

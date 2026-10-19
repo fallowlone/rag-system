@@ -1,0 +1,38 @@
+node_modules/
+dist/
+.env
+*.local
+*.tsbuildinfo
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal
+
+# Local data
+data/*.db
+data/backups/
+
+# macOS app runtime state (local SQLite sessions DB — user data, churns)
+apps/macos/data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+*.tgz
+.worktrees/
+
+# Eval harness output (regenerated per run, not checked in)
+eval/results/
+eval/extraction/results/
+services/retrieval-models/.venv/
+__pycache__/
+
+# third-party agent skills (see skills-lock.json) and local tool state, not redistributed
+.agents/
+.claude/
+.cortexkit/
+.zcode/

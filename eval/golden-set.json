@@ -1,0 +1,332 @@
+{
+  "version": 1,
+  "description": "Golden set for retrieval eval (RetrievalService.searchUnified). Answers verified against the live seeded LawChunk table (see eval/README.md for the psql queries used).",
+  "questions": [
+    {
+      "id": "q01",
+      "lang": "ru",
+      "type": "explicit_law",
+      "query": "Что говорит § 543 BGB о внеочередном расторжении договора аренды по важной причине?",
+      "relevant": [{ "lawId": "bgb", "normKey": "§ 543_p0_c0" }]
+    },
+    {
+      "id": "q02",
+      "lang": "ru",
+      "type": "category_only",
+      "category": "mietvertrag",
+      "query": "Хозяин квартиры хочет повысить арендную плату до среднерыночной — насколько это законно?",
+      "relevant": [{ "lawId": "bgb", "normKey": "§ 558_p0_c0" }]
+    },
+    {
+      "id": "q03",
+      "lang": "ru",
+      "type": "conversational",
+      "query": "В квартире плесень на стенах, могу ли я платить меньше аренды, пока хозяин не устранит проблему?",
+      "relevant": [{ "lawId": "bgb", "normKey": "§ 536_p0_c0" }]
+    },
+    {
+      "id": "q04",
+      "lang": "ru",
+      "type": "category_only",
+      "category": "mietvertrag",
+      "query": "После выезда хозяин не возвращает залог за квартиру уже три месяца",
+      "relevant": [{ "lawId": "bgb", "normKey": "§ 551_p0_c0" }]
+    },
+    {
+      "id": "q05",
+      "lang": "ru",
+      "type": "conversational",
+      "query": "Пришел перерасчет коммунальных платежей за прошлый год, хозяин требует доплатить — законно ли это?",
+      "relevant": [{ "lawId": "bgb", "normKey": "§ 556_p0_c0" }]
+    },
+    {
+      "id": "q06",
+      "lang": "ru",
+      "type": "explicit_law",
+      "query": "Что позволяет хозяину квартиры § 573b BGB при частичном использовании помещения не для жилья?",
+      "relevant": [{ "lawId": "bgb", "normKey": "§ 573b_p0_c0" }]
+    },
+    {
+      "id": "q07",
+      "lang": "ru",
+      "type": "explicit_law",
+      "query": "Что означает § 31 SGB II про Pflichtverletzung, если я пропустил встречу в Jobcenter?",
+      "relevant": [{ "lawId": "sgb_2", "normKey": "§ 31_p0_c0" }]
+    },
+    {
+      "id": "q08",
+      "lang": "ru",
+      "type": "category_only",
+      "category": "jobcenter",
+      "query": "Мне срезали Bürgergeld за пропущенную встречу в Jobcenter, это законно?",
+      "relevant": [{ "lawId": "sgb_2", "normKey": "§ 31_p0_c0" }]
+    },
+    {
+      "id": "q09",
+      "lang": "ru",
+      "type": "category_only",
+      "category": "jobcenter",
+      "query": "Оплачивает ли Jobcenter аренду жилья полностью, если я получаю Bürgergeld?",
+      "relevant": [{ "lawId": "sgb_2", "normKey": "§ 22_p0_c0" }]
+    },
+    {
+      "id": "q10",
+      "lang": "ru",
+      "type": "conversational",
+      "query": "Я беременна и получаю Bürgergeld, положена ли мне надбавка к пособию?",
+      "relevant": [{ "lawId": "sgb_2", "normKey": "§ 21_p0_c0" }]
+    },
+    {
+      "id": "q11",
+      "lang": "ru",
+      "type": "conversational",
+      "query": "У пенсионера маленькая пенсия и нет сбережений, кто обязан оплачивать ему социальную помощь по месту жительства?",
+      "relevant": [{ "lawId": "sgb_12", "normKey": "§ 3_p0_c0" }]
+    },
+    {
+      "id": "q12",
+      "lang": "ru",
+      "type": "explicit_law",
+      "query": "Что говорит § 90 SGB XII про имущество, которое нужно использовать перед получением социальной помощи?",
+      "relevant": [{ "lawId": "sgb_12", "normKey": "§ 90_p0_c0" }]
+    },
+    {
+      "id": "q13",
+      "lang": "ru",
+      "type": "category_only",
+      "category": "visa",
+      "query": "Как получить бессрочный вид на жительство в Германии после нескольких лет работы?",
+      "relevant": [{ "lawId": "aufenthg_2004", "normKey": "§ 9_p0_c0" }]
+    },
+    {
+      "id": "q14",
+      "lang": "ru",
+      "type": "conversational",
+      "query": "Что такое Duldung и чем она отличается от обычного вида на жительство?",
+      "relevant": [{ "lawId": "aufenthg_2004", "normKey": "§ 60a_p0_c0" }]
+    },
+    {
+      "id": "q15",
+      "lang": "ru",
+      "type": "category_only",
+      "category": "visa",
+      "query": "Могу ли я воссоединиться с семьей в Германии, если я гражданин Германии, а супруг(а) — нет?",
+      "relevant": [{ "lawId": "aufenthg_2004", "normKey": "§ 28_p0_c0" }]
+    },
+    {
+      "id": "q16",
+      "lang": "ru",
+      "type": "explicit_law",
+      "query": "Какие условия для получения Niederlassungserlaubnis для квалифицированных специалистов по § 18c AufenthG?",
+      "relevant": [{ "lawId": "aufenthg_2004", "normKey": "§ 18c_p0_c0" }]
+    },
+    {
+      "id": "q17",
+      "lang": "ru",
+      "type": "category_only",
+      "category": "visa",
+      "query": "Какие выплаты положены во время рассмотрения заявления на убежище?",
+      "relevant": [{ "lawId": "asylblg", "normKey": "§ 1_p0_c0" }],
+      "note": "Task 15: category=visa now defaults to [aufenthg_2004, asylblg] (asylblg no longer hard-excluded). Still returns 0 results after the fix — no chunk (from any law) clears MIN_SIMILARITY=0.35 for this exact ru query embedding, a separate pre-existing cross-lingual similarity gap, independent of the category filter. Do not 'fix' by changing the category."
+    },
+    {
+      "id": "q18",
+      "lang": "ru",
+      "type": "conversational",
+      "query": "Что грозит за кражу телефона в магазине?",
+      "relevant": [{ "lawId": "stgb", "normKey": "§ 242_p0_c0" }]
+    },
+    {
+      "id": "q19",
+      "lang": "ru",
+      "type": "explicit_law",
+      "query": "Что говорит § 223 StGB о телесных повреждениях?",
+      "relevant": [{ "lawId": "stgb", "normKey": "§ 223_p0_c0" }]
+    },
+    {
+      "id": "q20",
+      "lang": "ru",
+      "type": "conversational",
+      "query": "Меня уволили без предупреждения и без причины, законно ли это по немецкому трудовому праву?",
+      "relevant": [{ "lawId": "kschg", "normKey": "§ 1_p0_c0" }]
+    },
+    {
+      "id": "q21",
+      "lang": "ru",
+      "type": "explicit_law",
+      "query": "Что написано в § 1 KSchG о социально неоправданном увольнении?",
+      "relevant": [{ "lawId": "kschg", "normKey": "§ 1_p0_c0" }],
+      "note": "Known gap: 'KSchG' is not in retrieval.service.ts LAW_ABBREVIATIONS, so an explicit § citation still runs an unfiltered search across the whole corpus."
+    },
+    {
+      "id": "q22",
+      "lang": "ru",
+      "type": "conversational",
+      "query": "Кто-то оскорбил меня публично при свидетелях, это наказуемо?",
+      "relevant": [{ "lawId": "stgb", "normKey": "§ 185_p0_c0" }]
+    },
+    {
+      "id": "q23",
+      "lang": "de",
+      "type": "explicit_law",
+      "query": "Was regelt § 536 BGB zur Mietminderung bei Mängeln der Wohnung?",
+      "relevant": [{ "lawId": "bgb", "normKey": "§ 536_p0_c0" }]
+    },
+    {
+      "id": "q24",
+      "lang": "de",
+      "type": "category_only",
+      "category": "mietvertrag",
+      "query": "Der Vermieter hat mir fristlos gekündigt, ohne mich vorher abzumahnen, ist das rechtens?",
+      "relevant": [{ "lawId": "bgb", "normKey": "§ 543_p0_c0" }]
+    },
+    {
+      "id": "q25",
+      "lang": "de",
+      "type": "category_only",
+      "category": "mietvertrag",
+      "query": "Der Vermieter will unsere Wohnung in Eigentumswohnungen umwandeln, kann er mir dann leichter kündigen?",
+      "relevant": [{ "lawId": "bgb", "normKey": "§ 577a_p0_c0" }]
+    },
+    {
+      "id": "q26",
+      "lang": "de",
+      "type": "explicit_law",
+      "query": "Wie hoch darf laut § 558 BGB die Miete an die ortsübliche Vergleichsmiete angepasst werden?",
+      "relevant": [{ "lawId": "bgb", "normKey": "§ 558_p0_c0" }]
+    },
+    {
+      "id": "q27",
+      "lang": "de",
+      "type": "conversational",
+      "query": "Ich habe eine Nebenkostenabrechnung bekommen, die viel höher ausfällt als erwartet, was steht im Gesetz dazu?",
+      "relevant": [{ "lawId": "bgb", "normKey": "§ 556_p0_c0" }]
+    },
+    {
+      "id": "q28",
+      "lang": "de",
+      "type": "category_only",
+      "category": "jobcenter",
+      "query": "Ich habe einen Termin beim Jobcenter verpasst und jetzt wurde mein Bürgergeld gekürzt.",
+      "relevant": [{ "lawId": "sgb_2", "normKey": "§ 31_p0_c0" }]
+    },
+    {
+      "id": "q29",
+      "lang": "de",
+      "type": "explicit_law",
+      "query": "Was steht in § 22 SGB II zu den Kosten der Unterkunft und Heizung?",
+      "relevant": [{ "lawId": "sgb_2", "normKey": "§ 22_p0_c0" }]
+    },
+    {
+      "id": "q30",
+      "lang": "de",
+      "type": "conversational",
+      "query": "Übernimmt das Jobcenter auch die Kosten für einen Deutschkurs zur Integration?",
+      "relevant": [{ "lawId": "sgb_2", "normKey": "§ 16_p0_c0" }]
+    },
+    {
+      "id": "q31",
+      "lang": "de",
+      "type": "category_only",
+      "category": "jobcenter",
+      "query": "Wie hoch ist der Regelbedarf beim Bürgergeld für eine alleinstehende Person?",
+      "relevant": [{ "lawId": "sgb_2", "normKey": "§ 20_p0_c0" }]
+    },
+    {
+      "id": "q32",
+      "lang": "de",
+      "type": "explicit_law",
+      "query": "Wer ist laut § 3 SGB XII Träger der Sozialhilfe?",
+      "relevant": [{ "lawId": "sgb_12", "normKey": "§ 3_p0_c0" }]
+    },
+    {
+      "id": "q33",
+      "lang": "de",
+      "type": "conversational",
+      "query": "Welches Vermögen muss ich vor dem Erhalt von Sozialhilfe zuerst aufbrauchen?",
+      "relevant": [{ "lawId": "sgb_12", "normKey": "§ 90_p0_c0" }]
+    },
+    {
+      "id": "q34",
+      "lang": "de",
+      "type": "category_only",
+      "category": "visa",
+      "query": "Wie kann ich meine Aufenthaltserlaubnis nach Ablauf verlängern?",
+      "relevant": [{ "lawId": "aufenthg_2004", "normKey": "§ 8_p0_c0" }]
+    },
+    {
+      "id": "q35",
+      "lang": "de",
+      "type": "explicit_law",
+      "query": "Was regelt § 28 AufenthG zum Familiennachzug zu Deutschen?",
+      "relevant": [{ "lawId": "aufenthg_2004", "normKey": "§ 28_p0_c0" }]
+    },
+    {
+      "id": "q36",
+      "lang": "de",
+      "type": "conversational",
+      "query": "Ich bin ausreisepflichtig, kann ich trotzdem eine Berufsausbildung beginnen?",
+      "relevant": [{ "lawId": "aufenthg_2004", "normKey": "§ 16g_p0_c0" }]
+    },
+    {
+      "id": "q37",
+      "lang": "de",
+      "type": "category_only",
+      "category": "visa",
+      "query": "Welche Anspruchseinschränkungen gibt es beim Asylbewerberleistungsgesetz?",
+      "relevant": [{ "lawId": "asylblg", "normKey": "§ 1a_p0_c0" }],
+      "note": "Task 15: category=visa now defaults to [aufenthg_2004, asylblg] — asylblg chunks are retrieved (previously 0/10 were asylblg, now 10/10 are, sim 0.64-0.73). Still not a golden hit: the returned top-10 are adjacent AsylbLG § 1a/§ 14/§ 11/§ 1 paragraphs, not the exact § 1a_p0_c0 chunk — a chunk-granularity/reranking gap, independent of the category filter."
+    },
+    {
+      "id": "q38",
+      "lang": "de",
+      "type": "explicit_law",
+      "query": "Was ist strafbar nach § 263 StGB (Betrug)?",
+      "relevant": [{ "lawId": "stgb", "normKey": "§ 263_p0_c0" }]
+    },
+    {
+      "id": "q39",
+      "lang": "de",
+      "type": "conversational",
+      "query": "Jemand ist unerlaubt in mein Haus eingedrungen, welcher Straftatbestand liegt hier vor?",
+      "relevant": [{ "lawId": "stgb", "normKey": "§ 123_p0_c0" }]
+    },
+    {
+      "id": "q40",
+      "lang": "de",
+      "type": "conversational",
+      "query": "Mein Arbeitgeber hat mir ohne sozialen Grund gekündigt, ist die Kündigung überhaupt wirksam?",
+      "relevant": [{ "lawId": "kschg", "normKey": "§ 1_p0_c0" }]
+    },
+    {
+      "id": "q41",
+      "lang": "de",
+      "type": "explicit_law",
+      "query": "Was steht in § 9 KSchG zur Abfindung bei Auflösung des Arbeitsverhältnisses durch das Gericht?",
+      "relevant": [{ "lawId": "kschg", "normKey": "§ 9_p0_c0" }],
+      "note": "Same known gap as q21: 'KSchG' is not in LAW_ABBREVIATIONS, so the explicit citation still triggers an unfiltered search."
+    },
+    {
+      "id": "q42",
+      "lang": "de",
+      "type": "conversational",
+      "query": "Wie hoch ist das Kindergeld für mein zweites Kind?",
+      "relevant": [{ "lawId": "bkgg_1996", "normKey": "§ 6_p0_c0" }]
+    },
+    {
+      "id": "q43",
+      "lang": "de",
+      "type": "conversational",
+      "query": "Ich habe kein Einkommen mehr und keine Rücklagen, wer hilft mir mit Sozialhilfe?",
+      "relevant": [{ "lawId": "sgb_12", "normKey": "§ 1_p0_c0" }]
+    },
+    {
+      "id": "q44",
+      "lang": "de",
+      "type": "explicit_law",
+      "query": "Was regelt § 26a AsylG zu sicheren Drittstaaten?",
+      "relevant": [{ "lawId": "asylvfg_1992", "normKey": "§ 26a_p0_c0" }],
+      "note": "Known bug: LAW_ABBREVIATIONS maps 'AsylG' -> lawId 'asylg', which has 0 rows in LawChunk (the real Asylverfahrensgesetz content is stored under lawId 'asylvfg_1992'). searchUnified therefore hard-filters to a non-existent lawId and (with no userId/docvault) returns an empty result set for this query."
+    }
+  ]
+}

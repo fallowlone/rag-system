@@ -1,0 +1,21 @@
+{
+  "fixture": "long-bescheid.txt",
+  "category": "jobcenter",
+  "note": "26,466 normalized chars. Everything marked beyondCut lies past MAX_PROMPT_DOC_CHARS (24,000) and is invisible to the model in a single pass. ensure_key_details scans the FULL text, so the deterministic details in the tail must still be found — that asymmetry is the whole point of this fixture, and the model-tier tail misses are the evidence that decides A2.",
+  "details": [
+    { "id": "bg_nummer",  "label": "BG-Nummer",  "kind": "text",     "value": "7788990BG11223", "tier": "deterministic", "beyondCut": false },
+    { "id": "doc_date",   "label": "Briefdatum", "kind": "iso_date", "value": "2026-09-03",     "tier": "deterministic", "beyondCut": false },
+    { "id": "amount_monthly", "label": "Monatlicher Betrag", "kind": "text", "value": "812,00", "tier": "model",         "beyondCut": false },
+    { "id": "amount_kdu",     "label": "Kosten der Unterkunft", "kind": "text", "value": "502,00", "tier": "model",      "beyondCut": false },
+
+    { "id": "tail_phone",     "label": "Telefon Sachbearbeiterin (Tail)", "kind": "digits", "value": "03099887766", "tier": "deterministic", "beyondCut": true },
+    { "id": "tail_zimmer",    "label": "Zimmer (Tail)",       "kind": "text",     "value": "b4.02",      "tier": "deterministic", "beyondCut": true },
+    { "id": "tail_sprechzeiten", "label": "Sprechzeiten (Tail)", "kind": "text",  "value": "donnerstag 13:00-16:00", "tier": "deterministic", "beyondCut": true },
+
+    { "id": "tail_widerspruch", "label": "Widerspruchsfrist (Tail)", "kind": "iso_date", "value": "2027-01-15", "tier": "model", "beyondCut": true },
+    { "id": "tail_nachweis",    "label": "Frist Nebenkostenabrechnung (Tail)", "kind": "iso_date", "value": "2026-12-20", "tier": "model", "beyondCut": true },
+    { "id": "tail_nachzahlung", "label": "Einmalige Nachzahlung (Tail)", "kind": "text", "value": "1.842,50", "tier": "model", "beyondCut": true },
+    { "id": "tail_termin",      "label": "Beratungstermin (Tail)", "kind": "iso_date", "value": "2027-01-12", "tier": "model", "beyondCut": true }
+  ],
+  "forbidden": []
+}

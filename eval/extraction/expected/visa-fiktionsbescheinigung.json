@@ -1,0 +1,22 @@
+{
+  "fixture": "visa-fiktionsbescheinigung.txt",
+  "category": "visa",
+  "note": "Geburtsdatum is present in the source and must be dropped — the prompt's privacy filter names it explicitly.",
+  "details": [
+    { "id": "aktenzeichen",    "label": "Aktenzeichen",        "kind": "text",     "value": "b 123/45-678", "tier": "deterministic" },
+    { "id": "sachbearb_phone", "label": "Telefon Sachbearbeiterin", "kind": "digits", "value": "0305550987", "tier": "deterministic" },
+    { "id": "sprechzeiten",    "label": "Sprechzeiten",        "kind": "text",     "value": "mittwoch 8:00-12:00", "tier": "deterministic" },
+    { "id": "raum",            "label": "Raum",                "kind": "text",     "value": "312",          "tier": "deterministic" },
+    { "id": "doc_date",        "label": "Briefdatum",          "kind": "iso_date", "value": "2026-08-28",   "tier": "deterministic" },
+
+    { "id": "gueltig_bis",     "label": "Gueltigkeit",         "kind": "iso_date", "value": "2026-12-15",   "tier": "model" },
+    { "id": "vorsprachetermin","label": "Vorsprachetermin",    "kind": "iso_date", "value": "2026-11-20",   "tier": "model" },
+    { "id": "gebuehr",         "label": "Gebuehr",             "kind": "text",     "value": "100,00",       "tier": "model" },
+    { "id": "obligation_pass", "label": "Pflicht: Reisepass",  "kind": "text",     "value": "reisepass",    "tier": "model" },
+    { "id": "obligation_einkommen", "label": "Pflicht: Einkommensnachweise", "kind": "text", "value": "einkommensnachweis", "tier": "model" },
+    { "id": "obligation_meldung",   "label": "Pflicht: Meldebescheinigung",  "kind": "text", "value": "meldebescheinigung", "tier": "model" }
+  ],
+  "forbidden": [
+    { "id": "geburtsdatum", "label": "Geburtsdatum", "kind": "text", "value": "03.04.1985" }
+  ]
+}

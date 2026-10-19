@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/*
+ * Papierkram design system — "clean German administrative" aesthetic:
+ * serif headings, generous whitespace, category color chips, light/dark.
+ */
+@theme {
+  --font-serif: "New York", "Iowan Old Style", "Palatino", Georgia, serif;
+}
+
+:root {
+  --accent: #2f6f4f;
+  --surface: #ffffff;
+  --bg: #faf9f7;
+  --text: #1f2937;
+  --text-muted: #6b7280;
+  --border: #e5e3df;
+  color-scheme: light;
+}
+
+.dark {
+  --accent: #4ade80;
+  --surface: #262524;
+  --bg: #1c1b1a;
+  --text: #e7e5e4;
+  --text-muted: #a8a29e;
+  --border: #3a3835;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* Category color chips — shared by Documents list and Calendar dots. */
+.cat-mietvertrag { --cat: #2563eb; }
+.cat-jobcenter { --cat: #ca8a04; }
+.cat-bank { --cat: #059669; }
+.cat-visa { --cat: #7c3aed; }
+.cat-versicherung { --cat: #dc2626; }
+.cat-other { --cat: #6b7280; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.btn {
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.btn:hover { opacity: 0.85; }
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.dark .btn-primary { color: #10230f; }
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+input, textarea, select {
+  user-select: text;
+}
+
+/* Indeterminate download shimmer (Settings model download without
+ * Content-Length). Own keyframes — must not depend on Tailwind emitting
+ * `pulse` for some unrelated class elsewhere.
+ */
+@keyframes dl-shimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}

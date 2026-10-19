@@ -1,0 +1,13 @@
+-- BatchJobState had no way to tell a live run from a dead one.
+--
+-- claimRun's retry path stole any row in status='running' whenever
+-- attemptsMade > 0, on the assumption that a retry means the previous attempt
+-- died. With worker concurrency 2 and BullMQ stall redelivery that assumption
+-- does not hold: the original attempt can still be running, and both then
+-- believe they own the day — double LLM spend, and conflicts fabricated from
+-- paraphrase drift between the two runs.
+--
+-- startedAt records when a run took the row, so the steal can require the run
+-- to be older than the worker's lock duration. NULL on pre-existing rows,
+-- which stay stealable exactly as before.
+ALTER TABLE "BatchJobState" ADD COLUMN IF NOT EXISTS "startedAt" TIMESTAMP(3);

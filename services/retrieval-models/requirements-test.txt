@@ -1,0 +1,5 @@
+# Test-only deps (kept out of the prod image): shape/cap contract tests run
+# via TestClient WITHOUT entering the lifespan, so no model is downloaded.
+-r requirements.txt
+pytest==8.3.4
+httpx==0.28.1

@@ -1,0 +1,24 @@
+[package]
+name = "dokumente-app"
+description = "Dokumente — macOS companion app for the rag-lawyer-bot"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+build = "build.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tokio = { version = "1", features = ["sync", "time"] }
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+dokumente-core = { path = "../crates/dokumente-core" }
+
+[features]
+# Enable local llama.cpp inference (Metal on Apple Silicon). Requires cmake.
+default = ["llama"]
+llama = ["dokumente-core/llama"]

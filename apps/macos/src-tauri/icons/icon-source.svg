@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3A7F5D"/>
+      <stop offset="1" stop-color="#245C40"/>
+    </linearGradient>
+  </defs>
+  <!-- Full-bleed deep green: reads at 16px, works on light and dark Docks -->
+  <rect x="0" y="0" width="1024" height="1024" rx="230" fill="url(#bg)"/>
+  <!-- Official letter: ivory sheet with folded corner -->
+  <rect x="292" y="168" width="440" height="688" rx="36" fill="#FAF9F7"/>
+  <polygon points="642,168 732,258 642,258" fill="#DCD6CB"/>
+  <!-- Letter text lines -->
+  <rect x="348" y="338" width="328" height="34" rx="17" fill="#2F6F4F"/>
+  <rect x="348" y="410" width="328" height="34" rx="17" fill="#2F6F4F"/>
+  <rect x="348" y="482" width="218" height="34" rx="17" fill="#2F6F4F"/>
+  <!-- Seal with paragraph mark -->
+  <circle cx="592" cy="716" r="80" fill="#C98A1B"/>
+  <circle cx="592" cy="716" r="64" fill="none" stroke="#FAF9F7" stroke-width="8" stroke-opacity="0.85"/>
+  <text x="592" y="748" text-anchor="middle" font-family="Georgia, 'Palatino Linotype', Palatino, serif" font-weight="bold" font-size="104" fill="#FAF9F7">§</text>
+</svg>

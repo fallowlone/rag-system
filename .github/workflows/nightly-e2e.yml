@@ -1,0 +1,23 @@
+name: Nightly e2e seed drift check
+
+# The app-sync e2e only runs against a live backend, so its SQL seeds rot
+# silently on schema changes (NOT NULL without default, renames). The drift
+# job below catches that class with no DB and no backend.
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  seed-drift:
+    name: e2e seed vs Prisma schema drift
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check seeds against schema
+        run: python3 scripts/check-e2e-seed-drift.py
+
+      - name: Shell syntax of e2e scripts
+        run: bash -n scripts/app-sync-e2e.sh

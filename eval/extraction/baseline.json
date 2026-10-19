@@ -1,0 +1,516 @@
+{
+  "fixtures": [
+    {
+      "fixture": "bank-dispo.txt",
+      "runs": 5,
+      "details": [
+        {
+          "id": "kundennummer",
+          "label": "Kundennummer",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "berater_phone",
+          "label": "Telefon Berater",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "zimmer",
+          "label": "Zimmer Filiale",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "doc_date",
+          "label": "Briefdatum",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "saldo",
+          "label": "Negativer Saldo",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "dispo",
+          "label": "Dispositionskredit",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "sollzins",
+          "label": "Sollzinssatz",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "deadline_ausgleich",
+          "label": "Frist Ausgleich",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "deadline_termin",
+          "label": "Beratungsgespraech",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        }
+      ]
+    },
+    {
+      "fixture": "bescheid-jobcenter.txt",
+      "runs": 5,
+      "details": [
+        {
+          "id": "bg_nummer",
+          "label": "BG-Nummer",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "berater_phone",
+          "label": "Telefon Ansprechpartner",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "sprechzeiten",
+          "label": "Sprechzeiten",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "zimmer",
+          "label": "Zimmer",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "doc_date",
+          "label": "Briefdatum",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "amount_total",
+          "label": "Monatlicher Betrag",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "amount_miete",
+          "label": "Anteil Miete",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "amount_heizung",
+          "label": "Anteil Heizkosten",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "deadline_nachweise",
+          "label": "Frist Nachweise",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "deadline_termin",
+          "label": "Beratungstermin",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "obligation_mietvertrag",
+          "label": "Pflicht: Mietvertrag einreichen",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "obligation_kontoauszuege",
+          "label": "Pflicht: Kontoauszuege",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        }
+      ]
+    },
+    {
+      "fixture": "long-bescheid.txt",
+      "runs": 5,
+      "details": [
+        {
+          "id": "bg_nummer",
+          "label": "BG-Nummer",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "doc_date",
+          "label": "Briefdatum",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "amount_monthly",
+          "label": "Monatlicher Betrag",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "amount_kdu",
+          "label": "Kosten der Unterkunft",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "tail_phone",
+          "label": "Telefon Sachbearbeiterin (Tail)",
+          "tier": "deterministic",
+          "beyondCut": true,
+          "foundRuns": 5
+        },
+        {
+          "id": "tail_zimmer",
+          "label": "Zimmer (Tail)",
+          "tier": "deterministic",
+          "beyondCut": true,
+          "foundRuns": 5
+        },
+        {
+          "id": "tail_sprechzeiten",
+          "label": "Sprechzeiten (Tail)",
+          "tier": "deterministic",
+          "beyondCut": true,
+          "foundRuns": 5
+        },
+        {
+          "id": "tail_widerspruch",
+          "label": "Widerspruchsfrist (Tail)",
+          "tier": "model",
+          "beyondCut": true,
+          "foundRuns": 5
+        },
+        {
+          "id": "tail_nachweis",
+          "label": "Frist Nebenkostenabrechnung (Tail)",
+          "tier": "model",
+          "beyondCut": true,
+          "foundRuns": 5
+        },
+        {
+          "id": "tail_nachzahlung",
+          "label": "Einmalige Nachzahlung (Tail)",
+          "tier": "model",
+          "beyondCut": true,
+          "foundRuns": 5
+        },
+        {
+          "id": "tail_termin",
+          "label": "Beratungstermin (Tail)",
+          "tier": "model",
+          "beyondCut": true,
+          "foundRuns": 5
+        }
+      ]
+    },
+    {
+      "fixture": "mietvertrag.txt",
+      "runs": 5,
+      "details": [
+        {
+          "id": "verwalter_phone",
+          "label": "Telefon Hausverwaltung",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "doc_date",
+          "label": "Briefdatum",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "mietbeginn",
+          "label": "Mietbeginn",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "kuendigungsfrist",
+          "label": "Kuendigungsfrist",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "kaltmiete",
+          "label": "Kaltmiete",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "betriebskosten",
+          "label": "Betriebskosten",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "gesamtmiete",
+          "label": "Gesamtmiete",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "kaution",
+          "label": "Kaution",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "kleinreparatur",
+          "label": "Kleinreparaturen-Grenze",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "wohnflaeche",
+          "label": "Wohnflaeche",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "buerozeiten",
+          "label": "Buerozeiten Ansprechpartner",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        }
+      ]
+    },
+    {
+      "fixture": "versicherung-kfz.txt",
+      "runs": 5,
+      "details": [
+        {
+          "id": "kundennummer",
+          "label": "Kundennummer",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "berater_phone",
+          "label": "Telefon Berater",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "sprechzeiten",
+          "label": "Sprechzeiten",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "zimmer",
+          "label": "Zimmer",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "doc_date",
+          "label": "Briefdatum",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "versicherungsnummer",
+          "label": "Versicherungsnummer",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "kennzeichen",
+          "label": "Kennzeichen",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "beitrag_alt",
+          "label": "Jahresbeitrag alt",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "beitrag_neu",
+          "label": "Jahresbeitrag neu",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "selbstbeteiligung",
+          "label": "Selbstbeteiligung",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "deadline_kuendigung",
+          "label": "Sonderkuendigungsfrist",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "deadline_kmstand",
+          "label": "Frist Kilometerstand",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "vertragsende",
+          "label": "Vertragsende",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "email",
+          "label": "E-Mail Kontakt",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        }
+      ]
+    },
+    {
+      "fixture": "visa-fiktionsbescheinigung.txt",
+      "runs": 5,
+      "details": [
+        {
+          "id": "aktenzeichen",
+          "label": "Aktenzeichen",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "sachbearb_phone",
+          "label": "Telefon Sachbearbeiterin",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "sprechzeiten",
+          "label": "Sprechzeiten",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "raum",
+          "label": "Raum",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "doc_date",
+          "label": "Briefdatum",
+          "tier": "deterministic",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "gueltig_bis",
+          "label": "Gueltigkeit",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "vorsprachetermin",
+          "label": "Vorsprachetermin",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "gebuehr",
+          "label": "Gebuehr",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "obligation_pass",
+          "label": "Pflicht: Reisepass",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "obligation_einkommen",
+          "label": "Pflicht: Einkommensnachweise",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        },
+        {
+          "id": "obligation_meldung",
+          "label": "Pflicht: Meldebescheinigung",
+          "tier": "model",
+          "beyondCut": false,
+          "foundRuns": 5
+        }
+      ]
+    }
+  ]
+}
